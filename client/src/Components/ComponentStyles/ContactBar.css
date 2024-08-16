@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+body {
+  background-color: #CBC3E3;
+}
+
+p {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: large;
+}
+
+.ContactBar {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-end; /* Align to the bottom */
+  height: 100vh; /* Full viewport height, or adjust as needed */
+}
+
+.ContactInfo {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-end; /* Align to the bottom */
+  height: 100vh; /* Full viewport height, or adjust as needed */
+}
+
+.ContactInfo p {
+  padding: 10px;
+  padding-bottom: 0px;
+  color: black;
+  transition: color 0.5s;
+}
+
+.ContactInfo p:hover {
+  color: rgb(75, 175, 33);
+}
+/* .loader {
+    transition: background-color 1s;
+    background-color: rgb(255, 255, 255);
+}
+
+.loader:hover {
+    background-color: rgb(0, 0, 0);
+    height: 50%;
+} */
