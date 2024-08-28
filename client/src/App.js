@@ -2,12 +2,19 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Package Imports
+import { Auth0Provider } from '@auth0/auth0-react';
+
 // Pages
 import Main from "./Pages/Main";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
+import Login from "./Pages/Login";
+import Help from "./Pages/Help"
 
 // Components
+import Layout from "./Components/Layout";
+import Signup from "./Pages/Signup";
 
 // Loading Screens
 import ContactBar from "./Components/ContactBar";
@@ -17,9 +24,15 @@ function App() {
     <div>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />}/>
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
+      <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="log-in" element={<Login />} />
+          <Route path="sign-up" element={<Signup />} />
+          <Route path="help" element={<Help />} />
+          <Route path="about" element={<About />} />
+
+        </Route>
       </Routes>
     </BrowserRouter>
         <ContactBar></ContactBar>

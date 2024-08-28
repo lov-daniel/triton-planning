@@ -1,12 +1,14 @@
-const Contact = () => {
+
+const Help = () => {
 
     return (
+
         <div>
             <p>
-            yo dis how u contact me
+                yo dis where you get help
             </p>
         </div>
     )
 }
 
-export default Contact;
+export default Help;

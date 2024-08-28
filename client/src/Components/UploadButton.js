@@ -1,7 +1,7 @@
 const UploadButton = () => {
     return (
         <div>
-            <button type="submit">hello world</button>
+            x
         </div>
     )
 }

@@ -1,6 +1,9 @@
-// Componnents
-import UploadButton from '../Components/UploadButton';
+// Components
 import FileInput from "../Components/FileInput";
+
+// Package Imports
+import { Auth0Provider } from '@auth0/auth0-react';
+
 
 const Main = () => {
 

@@ -1,12 +1,14 @@
-const Contact = () => {
+
+const Login = () => {
 
     return (
+
         <div>
             <p>
-            yo dis how u contact me
+                yo dis where you login
             </p>
         </div>
     )
 }
 
-export default Contact;
+export default Login;
