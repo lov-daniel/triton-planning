@@ -1,6 +1,7 @@
 ## Degree Visualizer (UCSD)
 
 > ⏰ **Last Updated:** August 27, 2024 (11:28PM)
+
 > 🗒️ **Note:** This project is not directly sponsored or affilated with the University of California, San Diego. I am a student who believes that the current tools for planning degrees are not adequate enough and thinks that this would be a neat solution.
 <br/>
 
