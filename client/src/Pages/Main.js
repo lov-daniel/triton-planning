@@ -1,5 +1,5 @@
 // Components
-import FileInput from "../Components/FileInput";
+import ActionTab from "../Components/ActionTab";
 
 // Package Imports
 import React, { useCallback, useState } from 'react';
@@ -53,7 +53,9 @@ const Main = () => {
             let userID = user_content[1];
 
             return (<div style={{width: "100vw",height: '100vw' }}>
-                <FileInput></FileInput>
+                <br></br>
+                <ActionTab/>
+                <p> user id: {userID}</p>
                 <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -65,7 +67,6 @@ const Main = () => {
                 <Background/>
                 <Controls/>
                 </ReactFlow>
-                <p> user id: {userID}</p>
                 </div>)
         }
 
