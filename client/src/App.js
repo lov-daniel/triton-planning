@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Package Imports
-import { Auth0Provider } from '@auth0/auth0-react';
+import { ReactFlowProvider } from "@xyflow/react";
 
 // Pages
 import Main from "./Pages/Main";
@@ -22,6 +22,7 @@ import ContactBar from "./Components/ContactBar";
 function App() {
   return (
     <div>
+    <ReactFlowProvider>
     <BrowserRouter>
       <Routes>
       <Route path="/" element={<Layout />}>
@@ -35,6 +36,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </ReactFlowProvider>
         <ContactBar></ContactBar>
     </div>
   );

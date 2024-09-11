@@ -1,0 +1,28 @@
+.dndflow {
+    display: flex;
+    height: 100vh;
+  }
+  
+  aside {
+    width: 200px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-right: 1px solid #ddd;
+  }
+  
+  .reactflow-wrapper {
+    flex: 1;
+    height: 100%;
+  }
+  
+  .dndnode {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    cursor: grab;
+  }
+  
+  .dndnode:active {
+    cursor: grabbing;
+  }
