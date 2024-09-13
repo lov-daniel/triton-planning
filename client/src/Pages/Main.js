@@ -1,6 +1,5 @@
 // Components
 import ActionTab from "../Components/ActionTab";
-import CustomNode from "../Components/CustomNode";
 import Graph from "../Components/Graph";
 
 // Package Imports
@@ -18,7 +17,7 @@ import {
 
   import '@xyflow/react/dist/style.css';
 
-  import ClassNode from "../Nodes/ClassNode";
+import ClassNode from "../Nodes/ClassNode";
 import Sidebar from "../Components/Sidebar";
    
 
@@ -26,21 +25,7 @@ import Sidebar from "../Components/Sidebar";
 const Main = () => {
     const nodeTypes = { classNode: ClassNode };
     
-    const initialNodes = [
-        {
-          id: 'CSE_11',
-          type: 'classNode',
-          position: { x: 0, y: 0 },
-          data: { label: 'CSE 11' }
-        },
-        {
-            id: 'CSE_12',
-            type: 'default',
-            position: { x: 0, y: 0 },
-            data: { label: 'CSE 12' }
-          }
-      ];
-
+    const initialNodes = [];
     const initialEdges = [];
 
 
@@ -54,10 +39,9 @@ const Main = () => {
             return (
                 <div>
                     <p> user id: {userID}</p>
-                    <ActionTab/>
-                    <CustomNode label="CSE 12"/>
-                    <Graph> </Graph>
                     <Sidebar/>
+                    <ActionTab/>
+                    <Graph> </Graph>
                 </div>)
         }
 

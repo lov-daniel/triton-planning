@@ -50,6 +50,13 @@ const Graph = () => {
 
       const OnDrop = (event) => {
           event.preventDefault();
+
+          // Check if the dropped data has the expected format
+          if (!event.dataTransfer.types.includes('application/reactflow')) {
+              console.warn('Invalid drop format');
+              return;
+          }
+
           const data = JSON.parse(event.dataTransfer.getData('application/reactflow'));
 
           const type = data.nodeType;

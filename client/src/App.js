@@ -32,7 +32,6 @@ function App() {
           <Route path="sign-up" element={<Signup />} />
           <Route path="help" element={<Help />} />
           <Route path="about" element={<About />} />
-
         </Route>
       </Routes>
     </BrowserRouter>
