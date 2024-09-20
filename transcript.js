@@ -42,7 +42,7 @@ const Load_Quarters = async (contents) => {
 
     contents.forEach(element => {
 
-      const items = element.items.map((item) => {
+      element.items.map((item) => {
         let word = item.str;
 
         if (word.includes(TERM)) {

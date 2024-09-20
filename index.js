@@ -9,19 +9,8 @@
 
   // Script Imports
   import Process_Transcript from './transcript.js';
+  import Load_Classes from './classes.js';
 
-  // Constants
-  const GRADES = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"];
-  const TERM = "Term:";
-  const END_CLASSES = "Term Credits Passed:";
-  const NO_GRADE = "N/A";
-  const PAGE_BREAK = "Not an Official Transcript";
-  const TRANSFER = "Approx";
-
-
-  // Storage
-  let quarters = [];
-  let contents = [];
 
   // CommonJS work arounds
   const __filename = fileURLToPath(import.meta.url);
@@ -51,7 +40,19 @@
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
   });
 
-  // All other routes should redirect to the React app (for client-side routing)
+  app.get('/update-classes', async (req, res) => {
+
+    try {
+
+      let scrapped = await Load_Classes();
+
+      res.json(scrapped);
+    } catch (error) {
+      console.error("Error while scrapping: " + error);
+    }
+
+  });
+
   app.post('/upload', upload.single('file'), async (req, res) => {
     // Send a response back to the client
     res.json({ message: 'Upload successful' });

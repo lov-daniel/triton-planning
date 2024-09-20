@@ -10,7 +10,8 @@ import {
     Background,
     useNodesState,
     useEdgesState,
-    addEdge
+    addEdge,
+    BackgroundVariant
   } from '@xyflow/react';
 
 // ReactFlow CSS
@@ -96,10 +97,10 @@ const Graph = () => {
         onInit={onInit}
         fitView
     >
-        <Background/>
+        <Background variant={BackgroundVariant.Lines}/>
         <Controls/>
         </ReactFlow>
-        </div>)
+        </div>) 
 };
 
 export default Graph
