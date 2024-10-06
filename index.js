@@ -3,8 +3,7 @@
   import path from 'path';
   import multer from 'multer';
   import cors from 'cors';
-  import { auth } from "express-openid-connect";
-  import pdfjs from 'pdfjs-dist/es5/build/pdf.js'; 
+  import * as pdfjs from 'pdfjs-dist';
   import { fileURLToPath } from 'url';
 
   // Script Imports

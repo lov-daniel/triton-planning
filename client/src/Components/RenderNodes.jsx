@@ -9,7 +9,6 @@ const RenderNodes = (props) => {
                     "HUM 1", "HUM 2", "HUM 3"];
 
     let search = props.search
-
     let render = [];
 
     if (search) {
@@ -22,7 +21,9 @@ const RenderNodes = (props) => {
         render = classes;
     }
 
-    return render.map((course) => <CustomNode label={course} units="4.0"/>);
+    return render.map((course, i) => (
+        <CustomNode label={course} units="4.0" key={`${course}-${i}`}/>
+      ));
 }; 
 
 export default RenderNodes;

@@ -14,7 +14,7 @@ const CustomNode = (props) => {
         <aside>
           <div
             className="dndnode" id={props.label}
-            onDragStart={(event) => onDragStart(event, 'classNode', props.label )}
+            onDragStart={(event) => onDragStart(event, 'default', props.label )}
             draggable
           >
             {props.label + " (" + props.units + ")"}

@@ -17,6 +17,9 @@ import {
 // ReactFlow CSS
 import '@xyflow/react/dist/style.css';
 
+// Node Styles
+import '../Nodes/NodeStyles/ClassNode.css'
+
 const nodeTypes = { classNode: ClassNode };
 const initialNodes = [
     {
@@ -69,7 +72,7 @@ const Graph = () => {
             });
           const newNode = {
               id: `${+new Date()}`,
-              type,
+              type : "default",
               position,
               data: { label: `${label} node` },
             };

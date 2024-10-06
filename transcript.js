@@ -1,5 +1,4 @@
 // Imports
-import pdfjs from 'pdfjs-dist/es5/build/pdf.js'; 
 
 // Search Constants
 const GRADES = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"];
