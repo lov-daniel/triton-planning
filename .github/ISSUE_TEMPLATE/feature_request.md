@@ -1,7 +1,10 @@
 ---
-title: "Feature Request: <Feature Name>"
-labels: ["enhancement", "needs-implementation"]
-assignees: ""
+name: Feature request
+about: Suggest an idea for this project
+title: "[Feature] : <Short Description of Feature>"
+labels: ''
+assignees: ''
+
 ---
 
 ## Description

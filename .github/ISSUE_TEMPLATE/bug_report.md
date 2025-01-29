@@ -1,7 +1,10 @@
 ---
-title: "Bug Report: <Short Description>"
-labels: ["bug", "needs-triage"]
-assignees: ""
+name: Bug report
+about: Create a report to help us improve
+title: "[Bug Report] : <Short Description>"
+labels: ''
+assignees: ''
+
 ---
 
 ## Description
@@ -44,4 +47,3 @@ assignees: ""
 
 ## Additional Context
 <!-- Add any other context, screenshots, or technical details relevant to the issue. -->
-
