@@ -1,0 +1,30 @@
+.dndflow {
+    display: flex;
+    height: 100vh;
+  }
+  
+  aside {
+    width: fit-content;
+    padding: 9px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 3%;
+    box-sizing: border-box; /* Makes padding and borders included in the width */
+    width: 29%;
+  }
+  
+  .reactflow-wrapper {
+    flex: 1;
+    height: 100%;
+  }
+  
+  .dndnode {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    cursor: grab;
+  }
+  
+  .dndnode:active {
+    cursor: grabbing;
+  }

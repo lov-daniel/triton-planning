@@ -1,0 +1,16 @@
+.Sidebar {
+  position: fixed;
+  z-index: 1000;
+}
+
+.search-bar {
+  padding: 5px;
+  padding-bottom: 5%;
+}
+
+.container-grid {
+  display: flex;
+  flex-wrap: wrap; /* Ensures items wrap to the next line */
+  gap: 10px; /* Adds space between items */
+  justify-content: flex-start; /* Aligns items to the left */
+}
