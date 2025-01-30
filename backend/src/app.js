@@ -5,7 +5,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 // Loading messages 
-const uri = process.env.DEV_MONGO_URI; 
+const uri = process.env.MONGO_URI; 
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -38,7 +38,6 @@ app.use('/auth-user', authRoutes);
 app.use('/upload', fileRoutes);
 
 // Starts server instance
-let port;
-process.env.STATUS === 'production' ? (port = process.env.PROD_PORT) : (port = process.env.DEV_PORT);
+let port = process.env.PORT
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
