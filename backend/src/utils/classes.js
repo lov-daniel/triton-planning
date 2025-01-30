@@ -25,44 +25,44 @@ const LoadDepartments = async () => {
 const Load_Classes = async () => {
 
     try {
-    let departments = await LoadDepartments();
-    (await departments).forEach(async department => {
+        let return_data = [];
+        let departments = await LoadDepartments();
+        
+        // Use for...of instead of forEach
+        for (let department of departments) {
+            let url = (URL_HEADER + department.replace("..", ""));
 
-        let url = (URL_HEADER + department.replace("..", ""));
-        console.log(url);
+            const { data } = await axios.get(url);
+            const $ = cheerio.load(data);
 
-        const { data } = await axios.get(url);
-        const $ = cheerio.load(data);
+            let scrapedData = [];
+            $('p').each((i, elem) => {
+                if ($(elem).hasClass("course-name")) {
+                    elem = $(elem).text();
+                    // String processing 
+                    let course_details = elem.split("(");
+                    if (course_details[1]) {
+                        course_details[1] = course_details[1].replace(')', '')
+                        let course_units = course_details[1].split(", ")
 
-    let scrapedData = [];
-    $('p').each((i, elem) => {
-        if ($(elem).hasClass("course-name")) {
-
-            elem = $(elem).text();
-
-            // console.log(`Processing: ${elem}`);
-
-            // String processing 
-            let course_details = elem.split("(");
-
-            if (course_details[1]) {
-                course_details[1] = course_details[1].replace(')', '')
-                let course_units = course_details[1].split(", ")
-
-                // Loops over for each unit option per class
-                course_units.forEach(element => {
-                    scrapedData.push(`${course_details[0]} (${element})`); 
-                });
-            } else {
-                scrapedData.push(elem); 
-            }
+                        // Loops over for each unit option per class
+                        course_units.forEach(element => {
+                            scrapedData.push(`${course_details[0]} (${element})`); 
+                        });
+                    } else {
+                        scrapedData.push(elem); 
+                    }
+                }
+            });
+            
+            return_data.push(scrapedData);
         }
-    });
-    console.log(scrapedData);
-    });
+
+        return return_data;
     } catch (error) {
-        console.error(`Error while attempting to process: ${error}`)
+        console.error(`Error while attempting to process: ${error}`);
     }
-}
+};
+
 
 export default Load_Classes;
