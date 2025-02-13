@@ -21,6 +21,16 @@ import ContactBar from "./Components/ContactBar";
 
 function App() {
   return (
+
+    const { handleRedirectCallback, isLoading, isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+
+    React.useEffect(() => {
+      if (window.location.search.includes("code=")) {
+        handleRedirectCallback();
+      }
+    }, [handleRedirectCallback]);
+
+
     <div>
     <ReactFlowProvider>
     <BrowserRouter>
