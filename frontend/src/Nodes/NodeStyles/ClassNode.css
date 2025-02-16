@@ -1,27 +1,49 @@
-.node-layout {
-    display: inline-grid;
-    grid-template-rows: 40px 10px 10px;
-    grid-template-columns: 10px 75px 10px;
-    grid-gap: 3px;
-    justify-items: center;
-}
-
-/* styles.css */
-.custom-handle {
-    background-color: gray; /* Change handle color */
-    border-radius: 10px; /* Make handle circular */
-    width: 36px;
-    height: 12px;
-    border: 2px solid #ffffff; /* Add a border */
-  }
-
 .class-node {
     border: 1px solid black;
     padding: 10px;
-    border-radius: 10px;   
+    border-radius: 10px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    min-width: 150px; /* Ensures a reasonable minimum width */
+    max-width: 250px; /* Prevents it from stretching too much */
+}
+
+.node-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
 }
 
 .node-header {
     font-size: small;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;  /* Ensures one line */
+    overflow: visible;  /* Allows text to be fully seen */
+    text-overflow: clip;  /* No ellipsis, just show full text */
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.checkbox-container input {
+    transform: scale(1.2);
+}
+
+.custom-handle {
+    background-color: gray;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    border: 2px solid white;
 }

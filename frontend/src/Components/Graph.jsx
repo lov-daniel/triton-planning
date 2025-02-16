@@ -21,20 +21,7 @@ import '@xyflow/react/dist/style.css';
 import '../Nodes/NodeStyles/ClassNode.css'
 
 const nodeTypes = { classNode: ClassNode };
-const initialNodes = [
-    {
-      id: 'CSE_11',
-      type: 'classNode',
-      position: { x: 0, y: 0 },
-      data: { label: 'CSE 11' }
-    },
-    {
-        id: 'CSE_12',
-        type: 'default',
-        position: { x: 0, y: 0 },
-        data: { label: 'CSE 12' }
-      }
-  ];
+const initialNodes = [];
 const initialEdges = [];
 
 
