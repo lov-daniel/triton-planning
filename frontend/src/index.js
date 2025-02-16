@@ -1,20 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const client_id = process.env.REACT_APP_AUTH0_CLIENT_ID;
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const client_id = import.meta.env.VITE_AUTH0_CLIENT_ID;
+const redirect_uri = import.meta.env.VITE_AUTH0_REDIRECT_URI;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+console.log("Using index.jsx");
+
 root.render(
   <Auth0Provider
       domain={domain}
       clientId={client_id}
       authorizationParams={{
-        redirect_uri: "http://localhost:3000"
+        redirect_uri: redirect_uri
       }}
     >
       <App />

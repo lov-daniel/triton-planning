@@ -10,6 +10,9 @@ const client_id = import.meta.env.VITE_AUTH0_CLIENT_ID;
 const redirect_uri = import.meta.env.VITE_AUTH0_REDIRECT_URI;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+console.log("Using main.jsx");
+
 root.render(
   <Auth0Provider
       domain={domain}

@@ -1,57 +1,52 @@
-import { useCallback, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-const handleStyle = { left: 10 };
-
 const ClassNode = ({ data, isConnectable }) => {
+  const [isCompleted, setCompleted] = useState(Boolean(data.completed));
 
-    const [isCompleted, setComplete] = useState(false);
+  // Sync state with `data.completed` when it changes externally
+  useEffect(() => {
+    setCompleted(data.completed || false);
+  }, [data.completed]);
 
-    const handleCompletion = () => {
-      setComplete(!isCompleted);
-      data.completed = !isCompleted;
-      console.log(data.completed);
-    };
-    
-    const RenderButton = () => {
-      return (
-          <input 
-              className={`btn ${isCompleted ? 'btn-success' : 'btn-danger'}`} 
-              type="button" 
-              value={isCompleted ? 'Class Completed' : 'Class Not Completed'} 
-              onClick={handleCompletion} 
-          />
-      );
+  const handleCompletion = () => {
+    const newStatus = !isCompleted;
+    setCompleted(newStatus);  // Update the local state
+    data.completed = newStatus; // Update the `data` directly
+    console.log("Completed:", newStatus);
   };
-    
-      return (
-        <div className="class-node">
-          <Handle
-            type="target"
-            position={Position.Top} 
-            isConnectable={isConnectable}
-            className='custom-handle'
-          />
-          <div className='node-layout'>
-            <label/>
-            <div>
-              <label htmlFor="text" className='node-header'>{`${data.label} (${data.units})`}</label>
-            </div>
-            <label/>
-            <label/>
-            <RenderButton/>
-        
-          </div>
-          <Handle
-            type="source"
-            position={Position.Bottom}
-            id="b"
-            isConnectable={isConnectable}
-            className='custom-handle'
-          />
-        </div>
-      );
 
-}
+  return (
+    <div className="class-node">
+      <Handle
+        type="target"
+        position={Position.Top}
+        isConnectable={isConnectable}
+        className="custom-handle"
+      />
+      
+      <div className="node-layout">
+        <div className="node-header">{`${data.label} (${data.units})`}</div>
+        
+        {/* Completion Checkbox */}
+        <div className="checkbox-container">
+          <input 
+            type="checkbox" 
+            checked={isCompleted}  // Ensures it's always true/false
+            onChange={handleCompletion} 
+          />
+          <label>{isCompleted ? "Completed" : "Not Completed"}</label>
+        </div>
+      </div>
+      
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        isConnectable={isConnectable}
+        className="custom-handle"
+      />
+    </div>
+  );
+};
 
 export default ClassNode;
