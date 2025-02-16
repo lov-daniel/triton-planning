@@ -1,0 +1,42 @@
+.button-edge__label {
+    position: absolute;
+    pointer-events: all;
+    transform-origin: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-edge__button {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #f7f9fb;
+    color: var(--xy-edge-label-color-default);
+    background-color: #f3f3f4;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Removes any default padding */
+    line-height: 1; /* Ensures text is centered */
+}
+
+
+.class-edge {
+    stroke: black !important; /* Edge color */
+    stroke-width: 2.5px; /* Edge thickness */
+    stroke-dasharray: 5, 3; /* Dotted effect */
+    animation: dash-animation 1.5s linear infinite;
+}
+
+/* Animation for a moving dashed line */
+@keyframes dash-animation {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -20;
+    }
+}

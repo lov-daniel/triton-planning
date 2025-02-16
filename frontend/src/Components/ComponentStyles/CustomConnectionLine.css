@@ -1,0 +1,26 @@
+import React from 'react';
+import { useConnection } from '@xyflow/react';
+
+export default ({ fromX, fromY, toX, toY, connectionLineStyle, isConnected }) => {
+  const { fromHandle } = useConnection();
+
+  return (
+    <g>
+      <path
+        fill="none"
+        stroke={isConnected ? 'black' : 'black'} // Solid black color when connected
+        strokeWidth={1.5}
+        className={isConnected ? 'animated-line' : ''} // Apply animation if connected
+        d={`M${fromX},${fromY} C ${fromX} ${toY} ${fromX} ${toY} ${toX},${toY}`}
+      />
+      <circle
+        cx={toX}
+        cy={toY}
+        fill="#fff"
+        r={3}
+        stroke={isConnected ? 'black' : 'black'} // Same color for the circle
+        strokeWidth={1.5}
+      />
+    </g>
+  );
+};

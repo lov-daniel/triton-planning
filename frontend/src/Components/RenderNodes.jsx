@@ -6,7 +6,9 @@ const RenderNodes = (props) => {
     let classes = ["ANTH 1", "ANTH 2", "ANTH 3",
                     "CSE 11", "CSE 12", "CSE 20",
                     "CSE 21", "CSE 29", "CSE 30",
-                    "HUM 1", "HUM 2", "HUM 3"];
+                    "CSE 100", "CSE 101", "CSE 110",
+                    "HUM 1", "HUM 2", "HUM 3",
+                    "HUM 4", "HUM 5"];
 
     let search = props.search
     let render = [];
