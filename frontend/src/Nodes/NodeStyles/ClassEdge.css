@@ -10,7 +10,7 @@
 .button-edge__button {
     width: 15px;
     height: 15px;
-    border: 2px solid #f7f9fb;
+    border: 1.5px solid #000000;
     color: var(--xy-edge-label-color-default);
     background-color: #f3f3f4;
     cursor: pointer;
@@ -26,7 +26,7 @@
 
 .class-edge {
     stroke: black !important; /* Edge color */
-    stroke-width: 2.5px; /* Edge thickness */
+    stroke-width: 2px !important; /* Edge thickness */
     stroke-dasharray: 5, 3; /* Dotted effect */
     animation: dash-animation 1.5s linear infinite;
 }
@@ -34,9 +34,9 @@
 /* Animation for a moving dashed line */
 @keyframes dash-animation {
     from {
-        stroke-dashoffset: 0;
+        stroke-dashoffset: -20;
     }
     to {
-        stroke-dashoffset: -20;
+        stroke-dashoffset: 20;
     }
 }

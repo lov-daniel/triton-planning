@@ -1,23 +1,73 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { ReactFlow, useNodesState, useEdgesState, addEdge, Controls, Background, BackgroundVariant } from '@xyflow/react';
+import { debounce } from "lodash";
 import CustomConnectionLine from './CustomLineConnection';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Components and Styles
 import ClassNode from "../Nodes/ClassNode";
 import ClassEdge from "../Nodes/ClassEdge";
 import '@xyflow/react/dist/style.css'; // ReactFlow CSS
 import '../Nodes/NodeStyles/ClassNode.css'; // Node Styles
+import { useAuth0 } from "@auth0/auth0-react";
 
 const initialNodes = [];
 const initialEdges = [];
 
+const edgeTypes = { classEdge: ClassEdge };
+
 const Graph = () => {
+
+  const { user } = useAuth0();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [isConnected, setIsConnected] = useState(false); // Track if the connection is completed
 
-  const edgeTypes = { classEdge: ClassEdge };
+  // Debounce function inside useMemo to avoid re-creating it on every render
+  const saveGraphDebounced = useMemo(
+    () =>
+      debounce((nodes, edges, user) => {
+        if (!user) return;
+  
+        let user_content = user.sub.split("|");
+        let userID = user_content[1]; // Match backend expectation
+  
+        fetch(`${BACKEND_URL}/graph/save`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userID, nodes, edges }), // ✅ Send correct keys
+        }).then(() => console.log("Graph saved!"));
+      }, 3000),
+    []
+  );
+
+  useEffect(() => {
+    saveGraphDebounced(nodes, edges, user);
+    return () => saveGraphDebounced.cancel();
+  }, [nodes, edges, user]);
+
+  const loadGraph = async () => {
+    let user_content = user.sub.split("|");
+    let userID = user_content[1];
+
+    try {
+        const response = await fetch(`${BACKEND_URL}/graph/load/${userID}`);
+        if (!response.ok) {
+            console.warn("No saved graph found.");
+            return;
+        }
+        const data = await response.json();
+        setNodes(data.nodes);
+        setEdges(data.edges);
+    } catch (error) {
+        console.error("Error loading graph:", error);
+    }
+  };
+
+  useEffect(() => {
+      loadGraph();
+  }, []);
 
   const nodeTypes = useMemo(
     () => ({
@@ -52,7 +102,7 @@ const Graph = () => {
     });
 
     const newNode = {
-      id: `${+new Date()}`,
+      id: `${data.label}`,
       type: 'classNode',
       position,
       data: { label: `${data.label}`, units: `${data.units}`, completed: false },
