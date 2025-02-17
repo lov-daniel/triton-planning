@@ -40,7 +40,7 @@ const Layout = () => {
   <div className="container-fluid">
     <a className="navbar-brand" href="#">
       <img src="logo.jpg" width="30" height="30" className="d-inline-block align-top" alt="Brand Logo" />
-      Degree Visualizer
+      Triton Planning
     </a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>

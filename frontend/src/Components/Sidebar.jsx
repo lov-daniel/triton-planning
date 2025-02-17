@@ -17,9 +17,6 @@ const Sidebar = () => {
     }
 
     return (<div className="Sidebar">
-            <button data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="false" aria-controls="sidebar" style={{writingMode: 'vertical-lr'}}>Classes</button>
-
-        <div className="collapse collapse-horizontal" id="sidebar">
             <div className="card card-body" style={{width: 500 + "px", height: 100 + "vw"}}>
                 <div className="search-bar">
                 <input className="form-control form-control-lg" type="text" placeholder="Search for class.." aria-label=".form-control-lg example" onChange={onChange}/>
@@ -28,8 +25,7 @@ const Sidebar = () => {
                     <RenderNodes search={search}/>
                 </div>
             </div>
-        </div>
-    </div>)
+        </div>)
 }
 
 export default Sidebar;

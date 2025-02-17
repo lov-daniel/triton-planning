@@ -1,4 +1,7 @@
 import express from 'express';
+import pdfjs from 'pdfjs-dist'; 
+import Process_Transcript from '../utils/transcript.js'
+
 const router = express.Router();
 
 // Package Imports
@@ -19,7 +22,7 @@ const upload = multer({storage})
 
 router.post('/', upload.single('file'), async (req, res) => {
     // Send a response back to the client
-    res.json({ message: 'Upload successful' });
+    res.json({ message: 'File uploaded'});
     const filePath = req.file.path;
   
     try {

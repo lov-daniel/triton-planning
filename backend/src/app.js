@@ -6,6 +6,9 @@ import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 // Loading messages 
 const uri = process.env.MONGO_URI; 
+const FRONTEND_URL = process.env.FRONTEND_URL;
+
+
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -19,6 +22,7 @@ mongoose.connect(uri, {
 import updateRoutes from './routes/update.js';
 import authRoutes from './routes/auth.js';
 import fileRoutes from './routes/file.js';
+import graphRoutes from './routes/save.js';
 
 // CommonJS work arounds
 const __filename = fileURLToPath(import.meta.url);
@@ -30,12 +34,19 @@ const app = express();
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());  
-app.use(cors());
+app.use(cors({
+  origin: FRONTEND_URL,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Authorization'],
+  credentials: true
+}));
 
 // Routes
 app.use('/update', updateRoutes);
 app.use('/auth-user', authRoutes);
 app.use('/upload', fileRoutes);
+app.use('/graph', graphRoutes);
 
 // Starts server instance
 let port = process.env.PORT || 4000;

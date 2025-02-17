@@ -1,6 +1,8 @@
 // React Imports
 import React, { useState } from "react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const FileInput = () => {
 
     const [file, setFile] = useState(null);
@@ -26,7 +28,7 @@ const FileInput = () => {
         formData.append('file', file);
 
         try {
-            const response = await fetch('/upload', {
+            const response = await fetch(`${BACKEND_URL}/upload`, {
                 method: 'POST',
                 body: formData,
             }).then(console.log("data sent"));

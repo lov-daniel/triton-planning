@@ -17,18 +17,11 @@ import {
 
   import '@xyflow/react/dist/style.css';
 
-import ClassNode from "../Nodes/ClassNode";
 import Sidebar from "../Components/Sidebar";
    
 
 
 const Main = () => {
-    const nodeTypes = { classNode: ClassNode };
-    
-    const initialNodes = [];
-    const initialEdges = [];
-
-
     const LoadContents = () => {
         const { user, isAuthenticated } = useAuth0();
 
@@ -38,7 +31,6 @@ const Main = () => {
 
             return (
                 <div>
-                    <p> user id: {userID}</p>
                     <Sidebar/>
                     <ActionTab/>
                     <Graph> </Graph>

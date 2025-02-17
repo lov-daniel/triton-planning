@@ -49,7 +49,7 @@ const Load_Quarters = async (contents) => {
           quarters.push(quarter);
         }
       })
-    })
+    }) 
 
     // Allocates extra space for transfer courses.
     quarters.push(["Transfer Courses:"]);
@@ -72,6 +72,10 @@ const Process_Classes = async (contents, quarters) => {
     const items = element.items.map((item) => {
       let word = item.str;
       
+      if (word === ' ' || word === '') {
+        return;
+      }
+
       textContent += (' ' + word);
       console.log("Word: ", word);
 
@@ -115,7 +119,7 @@ const Process_Classes = async (contents, quarters) => {
   })
 
 }
-
+2
 // Primarily function
 const Process_Transcript = async (file) => {
 
