@@ -35,27 +35,37 @@ const Load_Classes = async () => {
             const { data } = await axios.get(url);
             const $ = cheerio.load(data);
 
-            let scrapedData = [];
             $('p').each((i, elem) => {
                 if ($(elem).hasClass("course-name")) {
                     elem = $(elem).text();
                     // String processing 
                     let course_details = elem.split("(");
-                    if (course_details[1]) {
-                        course_details[1] = course_details[1].replace(')', '')
-                        let course_units = course_details[1].split(", ")
+                    let unit_count;
+                    let full_title = course_details[0];
+                    let department_number = full_title.split(/\. ?|:/);
+                    let course_department = department_number[0].split(' ')[0].split('/')[0];
+                    let course_number = department_number[0].split(' ')[1];
 
-                        // Loops over for each unit option per class
-                        course_units.forEach(element => {
-                            scrapedData.push(`${course_details[0]} (${element})`); 
-                        });
+                    if (course_details[1]) {
+                        unit_count = course_details[1].match(/\b\d{1,2}\b/);
+                        if (!unit_count) {
+                            unit_count = course_details[2].match(/\b\d{1,2}\b/);
+                        }
+
+                        unit_count = (unit_count[0] != null ? unit_count[0] : 0)
                     } else {
-                        scrapedData.push(elem); 
+                        unit_count = 0;
                     }
+
+                    let course_title = department_number[1];
+                    if (course_title) {
+                        if (course_title[course_title.length - 1] == " ") {
+                            course_title = course_title.substring(0, course_title.length - 1);
+                        }
+                    }
+                    return_data.push([course_department, course_number, course_title, unit_count])
                 }
             });
-            
-            return_data.push(scrapedData);
         }
 
         return return_data;

@@ -13,4 +13,7 @@
   flex-wrap: wrap; /* Ensures items wrap to the next line */
   gap: 10px; /* Adds space between items */
   justify-content: flex-start; /* Aligns items to the left */
+  max-height: 70vh;  /* Adjust the height as needed */
+  overflow-y: auto;  /* Enables vertical scrolling */
+  overflow-x: hidden; /* Hides horizontal scroll if unnecessary */
 }

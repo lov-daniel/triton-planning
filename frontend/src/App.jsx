@@ -1,11 +1,10 @@
 // React Imports
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Package Imports
 import { ReactFlowProvider } from "@xyflow/react";
-import { useAuth0, Auth0Provider } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Pages
 import Main from "./Pages/Main";
@@ -17,10 +16,9 @@ import Signup from "./Pages/Signup";
 
 // Components
 import Layout from "./Components/Layout";
-import ContactBar from "./Components/ContactBar";
 
 function App() {
-  const { handleRedirectCallback, isLoading, isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+  const { handleRedirectCallback } = useAuth0();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -58,25 +56,8 @@ function App() {
           </Routes>
         </BrowserRouter>
       </ReactFlowProvider>
-      <ContactBar />
     </div>
   );
 }
 
-// Wrap App in Auth0Provider with correct configuration
-const auth0Domain = import.meta.env.VITE_AUTH0_DOMAIN;
-const auth0ClientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-
-const Root = () => (
-  <Auth0Provider
-    domain={auth0Domain}
-    clientId={auth0ClientId}
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-    }}
-  >
-    <App />
-  </Auth0Provider>
-);
-
-export default Root;
+export default App;
