@@ -17,15 +17,19 @@ const Sidebar = () => {
     }
 
     return (<div className="Sidebar">
-            <div className="card card-body" style={{width: 500 + "px", height: 100 + "vw"}}>
-                <div className="search-bar">
-                <input className="form-control form-control-lg" type="text" placeholder="Search for class.." aria-label=".form-control-lg example" onChange={onChange}/>
-                </div>
-                <div className="container-grid">
-                    <RenderNodes search={search}/>
-                </div>
+        <div className="card card-body" style={{width: 500 + "px", height: 100 + "vw"}}>
+            <div className="search-bar">
+                <input className="form-control form-control-lg" 
+                    type="text" 
+                    placeholder="Search for class.." 
+                    aria-label=".form-control-lg example" 
+                    onChange={onChange}/>
             </div>
-        </div>)
+            <div className="container-grid">
+                <RenderNodes search={search}/>
+            </div>
+        </div>
+    </div>)
 }
 
 export default Sidebar;

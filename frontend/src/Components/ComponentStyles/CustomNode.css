@@ -1,23 +1,24 @@
 .dndflow {
-    display: flex;
-    height: 100vh;
-  }
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+aside {
+  width: 29%; /* Sidebar takes up 29% of the width */
+  padding: 9px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 3%;
+  box-sizing: border-box; /* Makes padding and borders included in the width */
+}
   
-  aside {
-    width: fit-content;
-    padding: 9px;
-    background: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 3%;
-    box-sizing: border-box; /* Makes padding and borders included in the width */
-    width: 29%;
-  }
-  
-  .reactflow-wrapper {
-    flex: 1;
-    height: 100%;
-  }
-  
+.reactflow-wrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
   .dndnode {
     padding: 10px;
     background: #fff;
